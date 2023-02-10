@@ -1,5 +1,8 @@
-<h1>Data Table</h1>
-
+<h1>Data Table Object</h1>
+<p>
+  Try <b>https://catfact.ninja/fact</b> or
+  <b>https://api.genderize.io/?name=luc</b>
+</p>
 <div class="form-group">
   <label for="apiAddress">API Address:</label>
   <input
@@ -10,20 +13,15 @@
   />
 </div>
 <button class="btn btn-primary" (click)="fetchData()">Fetch Data</button>
-
-<table class="table mt-3" *ngIf="data">
+<table class="table table-bordered" *ngIf="data">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Body</th>
+      <th *ngFor="let key of displayedColumns">{{ key }}</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of data">
-      <td>{{ item.id }}</td>
-      <td>{{ item.title }}</td>
-      <td>{{ item.body }}</td>
+    <tr>
+      <td *ngFor="let key of displayedColumns">{{ data[key] }}</td>
     </tr>
   </tbody>
 </table>
